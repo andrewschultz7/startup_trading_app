@@ -7,27 +7,28 @@ import os, time
 from pywinauto import Application
 import pyautogui
 
-password = os.environ.get('TOSPASSWORD')
-window_title = "Logon to thinkorswim"
-pwd_field = pyautogui.locateCenterOnScreen('screenshots\tos_password.PNG', confidence=0.8)
+def tos_script():
+    password = os.environ.get('TOSPASSWORD')
+    window_title = "Logon to thinkorswim"
+    pwd_field = pyautogui.locateCenterOnScreen('screenshots\tos_password.PNG', confidence=0.8)
 
-os.system('start explorer "C:\\Program Files\\thinkorswim\\thinkorswim.exe"')
+    os.system('start explorer "C:\\Program Files\\thinkorswim\\thinkorswim.exe"')
 
-exit_loop = False
-while not exit_loop:
-    time.sleep(1)
-    try:
-        tos_app = Application(backend='uia').connect(title=window_title)
-        window = tos_app.window(title=window_title)
-        exit_loop = True
-    except:
+    exit_loop = False
+    while not exit_loop:
+        time.sleep(1)
         try:
-            tos_app = Application(backend='win32').connect(title=window_title)
+            tos_app = Application(backend='uia').connect(title=window_title)
             window = tos_app.window(title=window_title)
             exit_loop = True
         except:
-            pass
+            try:
+                tos_app = Application(backend='win32').connect(title=window_title)
+                window = tos_app.window(title=window_title)
+                exit_loop = True
+            except:
+                pass
 
-pyautogui.moveTo(pwd_field)
-pyautogui.typewrite(password)
-pyautogui.press('Enter')
+    pyautogui.moveTo(pwd_field)
+    pyautogui.typewrite(password)
+    pyautogui.press('Enter')
