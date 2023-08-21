@@ -6,3 +6,4 @@ selenium
 dotenv
 pywinauto
 opencv-python
+webdriver-manager
