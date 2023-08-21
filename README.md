@@ -2,10 +2,6 @@
 
 Automation app that opens needed desktop applications and logins in when appropriate.
 
-## Table of Contents
-
-[TOC]
-
 ## Libraries:
 
 - pyautogui
@@ -32,9 +28,10 @@ User wants to watch tradovate website open and username and password autofill.
 **Tradovate site Solution**<br />
 Utilize selenium to access chrome and insert username and password into respective fields.
 
-**Issue**<br />
+**Issue 01**<br />
 Struggling to keep webpage open.<br />
-**Solution**<br />
+
+**Solution 01**<br />
 Added newer ChromeDriverManger to handle drivers.
 
 ## Tradingview
@@ -45,26 +42,27 @@ User wants to watch tradingview app open and login if necessary.
 **Tradingview app Solution**<br />
 Utilize pywinauto to open app and pyautogui to access elements. Use image recognition to find elements.
 
-**Issue**<br />
+**Issue 01**<br />
 This app is part of windows apps.<br />
-**Solution**<br />
+**Solution 01**<br />
 
 - Researched accessing windows apps.
 - Decided on image recognition to find elements since element tags were not easily accessible
 
-**Issue**<br />
+**Issue 02**<br />
 Some elements could have more than one state.<br />
-**Solution**<br />
+
+**Solution 02**<br />
 
 - Inserted multiple state images into list
 - coded conditional statement for multiple state images
 
-**Issue**<br />
+**Issue 03**<br />
 
 - locateCenterOnScreen method is long for conditional statement
 - webpage could show "pick your login", "grant access", or "username/password fields"<br />
 
-**Solution**<br />
+**Solution 03**<br />
 
 - coded anonymous function to run conditional statement
 - function also allows for any size list and any login potentials
@@ -77,7 +75,8 @@ User want to watch TOS open and login<br />
 **TOS app solution**<br />
 Utilize pywinauto to open app and pyautogui to access elements.
 
-**Issue**<br />
+**Issue 01**<br />
 TOS password field not accessible.<br />
-**Solution**<br />
+
+**Solution 01**<br />
 User pyautogui to match password field image.<br />

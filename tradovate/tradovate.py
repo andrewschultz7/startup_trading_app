@@ -26,7 +26,6 @@ def tradovate_script():
         chrome_options = Options()
         chrome_options.add_experimental_option("detach", True)
         global driver
-
         driver = webdriver.Chrome(
             options=chrome_options,
             service=ChromeService(ChromeDriverManager().install())
