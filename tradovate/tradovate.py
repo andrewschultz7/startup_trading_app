@@ -25,7 +25,12 @@ def tradovate_script():
         password = os.environ.get("PASSWORD2")
         chrome_options = Options()
         chrome_options.add_experimental_option("detach", True)
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        global driver
+
+        driver = webdriver.Chrome(
+            options=chrome_options,
+            service=ChromeService(ChromeDriverManager().install())
+            )
         driver.maximize_window()
         driver.get('https://trader.tradovate.com/welcome')
         WebDriverWait(driver, 15).until(ec.visibility_of_element_located((By.XPATH, '//*[@id="name-input"]')))
@@ -34,7 +39,7 @@ def tradovate_script():
         password_field = driver.find_element(By.XPATH, '//*[@id="password-input"]')
         password_field.send_keys(password)
         password_field.send_keys(Keys.ENTER)
-        time.sleep(15)
+        time.sleep(2)
     except Exception as e:
         print("TRADOVATE error ", str(e))
     # driver.quit()

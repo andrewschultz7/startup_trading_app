@@ -2,7 +2,7 @@
 
 Automation app that opens needed desktop applications and logins in when appropriate.
 
-# Table of Contents
+## Table of Contents
 
 [TOC]
 
