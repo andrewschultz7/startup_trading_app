@@ -41,5 +41,3 @@ def tradovate_script():
         time.sleep(2)
     except Exception as e:
         print("TRADOVATE error ", str(e))
-    # driver.quit()
-    print("TRADOVATE complete")

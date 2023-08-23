@@ -80,4 +80,3 @@ def tradingview_script():
             wait_for_image(['screenshots\\grant_access.PNG'])
             if 'grant_access' in image:
                 tv_unknown_loop = False
-    print("TV complete")
