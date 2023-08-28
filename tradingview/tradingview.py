@@ -15,51 +15,48 @@ import os, time
 import pyautogui
 from pywinauto.application import Application
 
+def wait_for_image(image_to_look_for=[], confidence=0.9, x=0, y=0, field=None):
+    global image
+    find_image = lambda: next(
+        (
+            (pyautogui.locateCenterOnScreen(image, confidence=confidence), image)
+            for image in image_to_look_for
+            if pyautogui.locateCenterOnScreen(image, confidence=confidence)
+        ),
+        (None, None)
+    )
+    image_found = None
+    while not image_found:
+        image_found, image = find_image()
+        if image !=None and 'logged_in' in image:
+            return image
+        if image_found:
+            pyautogui.moveTo(image_found.x-x, image_found.y-y)
+            pyautogui.click()
+            if field is not None and 'tv' in image:
+                pyautogui.typewrite(field)
+            return image
+
 def tradingview_script():
     global image
     username = os.environ.get('TVUSERNAME')
     password = os.environ.get('TVPASSWORD')
-
     image = None
-    def wait_for_image(image_to_look_for=[], confidence=0.9, x=0, y=0, field=None):
-        global image
-        find_image = lambda: next(
-            (
-                (pyautogui.locateCenterOnScreen(image, confidence=confidence), image)
-                for image in image_to_look_for
-                if pyautogui.locateCenterOnScreen(image, confidence=confidence)
-            ),
-            (None, None)
-        )
-
-        image_found = None
-        while not image_found:
-            image_found, image = find_image()
-            if image !=None and 'logged_in' in image:
-                return image
-            if image_found:
-                pyautogui.moveTo(image_found.x-x, image_found.y-y)
-                pyautogui.click()
-                if field is not None and 'tv' in image:
-                    pyautogui.typewrite(field)
-                return image
-
 
     os.system('start explorer shell:appsfolder\\TradingView.Desktop_n534cwy3pjxzj!TradingView.Desktop')
     time.sleep(2)
     window_title = "TradingView"
-
     while image == None:
         time.sleep(1)
         try:
             tv_app = Application(backend='uia').connect(title=window_title)
             window = tv_app.window(title=window_title)
-            print("1st try window ", window)
+            print("Tradingview 1st try window ", window)
         except:
             try:
                 tv_app = Application(backend='win32').connect(title=window_title)
                 window = tv_app.window(title=window_title)
-                print("2nd try window ", window)
+                print("Tradingview 2nd try window ", window)
             except:
                 pass
         wait_for_image(['screenshots\\login.PNG', 'screenshots\\logged_in.PNG'])
