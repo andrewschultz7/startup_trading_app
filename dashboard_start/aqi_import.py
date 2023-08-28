@@ -8,13 +8,9 @@ def aqi_to_db():
     db_file = "aqi.db"
     url = f"https://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=59901&distance=25&API_KEY={aqi_key}"
     response = requests.get(url)
+    aqi_data = json.loads(response.text)
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
-
-    with open('response.json', 'w') as f:
-        f.write(response.text)
-    with open('response.json') as demo:
-        aqi_data = json.load(demo)
 
     for data in aqi_data:
                 insert_query = """
