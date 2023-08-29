@@ -13,6 +13,7 @@
 from dotenv import load_dotenv
 import os, time
 import pyautogui
+import pywinauto
 from pywinauto.application import Application
 
 def wait_for_image(image_to_look_for=[], confidence=0.9, x=0, y=0, field=None):

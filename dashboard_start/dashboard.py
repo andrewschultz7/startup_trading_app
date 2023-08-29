@@ -1,3 +1,6 @@
+# API fetch from AQI to database
+# start React
+
 import subprocess, os
 from dashboard_start.aqi_import import aqi_to_db
 

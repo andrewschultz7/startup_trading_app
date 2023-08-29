@@ -4,6 +4,7 @@
 
 from dotenv import load_dotenv
 import os, time
+import pywinauto
 from pywinauto.application import Application
 import pyautogui
 

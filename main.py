@@ -11,15 +11,14 @@ load_dotenv()
 def main():
     def run_applications():
         dialog_main.destroy()
-        print("EEEE")
-        if var_dashboard.get() == 1:
-            dashboard_script()
         if var_tradovate.get() == 1:
             tradovate_script()
         if var_tradingview.get() == 1:
             tradingview_script()
         if var_tos.get() == 1:
             tos_script()
+        if var_dashboard.get() == 1:
+            dashboard_script()
 
 
     dialog_main = Tk()

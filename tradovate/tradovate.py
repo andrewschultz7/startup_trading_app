@@ -8,6 +8,7 @@
 
 from dotenv import load_dotenv
 import os, time
+import selenium
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager

@@ -1,3 +1,7 @@
+# API fetch request from airnowapi.org
+# write date, hour, and AQI to database without typical framework
+    # use SQLite
+
 import sqlite3, os, requests, json
 from dotenv import load_dotenv
 

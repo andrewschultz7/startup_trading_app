@@ -1,3 +1,7 @@
+// useEffect webhook to fetch for temperature from weatherapi.com - use promise chaining
+// useEffect webhook to fetch for current AQI from airnowapi.org - use async/await
+// render current temperature and current AQI to webpage
+
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
