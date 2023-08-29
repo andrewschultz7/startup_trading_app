@@ -8,7 +8,6 @@
 
 from dotenv import load_dotenv
 import os, time
-import selenium
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
@@ -20,14 +19,14 @@ from selenium.webdriver.common.keys import Keys
 
 def tradovate_script():
     try:
-        username = os.environ.get("USERNAME2")
-        password = os.environ.get("PASSWORD2")
+        username = os.environ.get("TRADOVATEUSERNAME")
+        password = os.environ.get("TRADOVATEPASSWORD")
         chrome_options = Options()
         chrome_options.add_experimental_option("detach", True)
-        global driver
         driver = webdriver.Chrome(
             options=chrome_options,
-            service=ChromeService(ChromeDriverManager().install())
+            service=ChromeService(ChromeDriverManager().install()),
+            keep_alive=True
             )
         driver.maximize_window()
         driver.get('https://trader.tradovate.com/welcome')

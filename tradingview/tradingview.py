@@ -13,7 +13,6 @@
 from dotenv import load_dotenv
 import os, time
 import pyautogui
-import pywinauto
 from pywinauto.application import Application
 
 def wait_for_image(image_to_look_for=[], confidence=0.9, x=0, y=0, field=None):
@@ -52,12 +51,12 @@ def tradingview_script():
         try:
             tv_app = Application(backend='uia').connect(title=window_title)
             window = tv_app.window(title=window_title)
-            print("Tradingview 1st try window ", window)
+            print("Tradingview uia window ", window)
         except:
             try:
                 tv_app = Application(backend='win32').connect(title=window_title)
                 window = tv_app.window(title=window_title)
-                print("Tradingview 2nd try window ", window)
+                print("Tradingview win32 window ", window)
             except:
                 pass
         wait_for_image(['screenshots\\login.PNG', 'screenshots\\logged_in.PNG'])

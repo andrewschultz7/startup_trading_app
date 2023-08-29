@@ -1,2 +1,1 @@
-ate = IntVar()
-    var_tradin
+,sticky=W
